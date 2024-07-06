@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Страница About</h1>
+    <p>Количество просмотров: <span class="counter"></span></p>
+    <a href="index.html">TO home</a>
+    <script>
+        fetch('http://localhost:3000/pageViews?page=/about.html')
+    .then(response => response.json())
+    .then(data => {   
+             
+        document.querySelector(".counter").textContent = data['count'];     
+    })
+    .catch(error => {
+        console.error('Ошибка при запросе данных о просмотрах:', error);
+    });
+    </script>
+</body>
+</html>
